@@ -25,9 +25,12 @@ import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.launchcode.techjobs.persistent.controllers.SkillController;
 
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -539,18 +542,18 @@ public class TestTaskTwo extends AbstractTest {
         displayViewSkillMethod.invoke(skillController, model, 1);
     }
 
-//    // --- END CONTROLLER TESTS --- //
-//
-//    /*
-//    * Tests SQL query for task 2
-//    * */
-//    @Test
-//    public void testSqlQuery() throws IOException {
-//        String queryFileContents = getFileContents("queries.sql");
-//
-//        Pattern queryPattern = Pattern.compile("SELECT\\s+name\\s+FROM\\s+employer\\s+WHERE\\s+location\\s+=\\s+\"St.\\s+Louis\\s+City\";", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
-//        Matcher queryMatcher = queryPattern.matcher(queryFileContents);
-//        boolean queryFound = queryMatcher.find();
-//        assertTrue(queryFound, "Task 2 SQL query is incorrect. Test your query against your database to find the error.");
-//    }
+    // --- END CONTROLLER TESTS --- //
+
+    /*
+    * Tests SQL query for task 2
+    * */
+    @Test
+    public void testSqlQuery() throws IOException {
+        String queryFileContents = getFileContents("queries.sql");
+
+        Pattern queryPattern = Pattern.compile("SELECT\\s+name\\s+FROM\\s+employer\\s+WHERE\\s+location\\s+=\\s+\"St.\\s+Louis\\s+City\";", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+        Matcher queryMatcher = queryPattern.matcher(queryFileContents);
+        boolean queryFound = queryMatcher.find();
+        assertTrue(queryFound, "Task 2 SQL query is incorrect. Test your query against your database to find the error.");
+    }
 }
